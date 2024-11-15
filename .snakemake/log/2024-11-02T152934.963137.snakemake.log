@@ -1,0 +1,36 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count
+------------------  -------
+all                       1
+extract_expression        1
+plot_expression           1
+total                     3
+
+Select jobs to execute...
+
+[Sat Nov  2 15:29:36 2024]
+rule extract_expression:
+    input: luad_rna.txt, gdc_sample_sheet.tsv
+    output: results/nkx2_1_expression.csv
+    jobid: 1
+    reason: Missing output files: results/nkx2_1_expression.csv
+    resources: tmpdir=/tmp
+
+[Sat Nov  2 15:29:38 2024]
+Error in rule extract_expression:
+    jobid: 1
+    input: luad_rna.txt, gdc_sample_sheet.tsv
+    output: results/nkx2_1_expression.csv
+
+RuleException:
+CalledProcessError in file /home/bec51319.iitr/workplace/tcga_data_analysis/data/expression_plot.smk, line 13:
+Command 'set -euo pipefail;  /home/bec51319.iitr/miniforge3/envs/tcga_data_analysis/bin/python3.8 /home/bec51319.iitr/workplace/tcga_data_analysis/data/.snakemake/scripts/tmpcifg7t8h.extract_expression.py' returned non-zero exit status 1.
+  File "/home/bec51319.iitr/workplace/tcga_data_analysis/data/expression_plot.smk", line 13, in __rule_extract_expression
+  File "/home/bec51319.iitr/miniforge3/envs/tcga_data_analysis/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-11-02T152934.963137.snakemake.log

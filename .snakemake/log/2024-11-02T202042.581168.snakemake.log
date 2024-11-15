@@ -1,0 +1,6 @@
+Building DAG of jobs...
+MissingInputException in rule extract_sample_types in file /home/bec51319.iitr/workplace/tcga_data_analysis/data/expression_plot.smk, line 5:
+Missing input files for rule extract_sample_types:
+    output: data/file_sample_types.tsv
+    affected files:
+        data/gdc_sample_sheet.tsv

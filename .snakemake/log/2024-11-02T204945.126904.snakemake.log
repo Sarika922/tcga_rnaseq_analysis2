@@ -1,0 +1,6 @@
+Building DAG of jobs...
+MissingInputException in rule extract_expression in file /home/bec51319.iitr/workplace/tcga_data_analysis/data/expression_plot.smk, line 15:
+Missing input files for rule extract_expression:
+    output: results/nkx2_1_expression.csv
+    affected files:
+        data/tcga_data

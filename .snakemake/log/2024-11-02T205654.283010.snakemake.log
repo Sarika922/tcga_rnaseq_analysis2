@@ -1,0 +1,51 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                     count
+--------------------  -------
+all                         1
+extract_expression          1
+extract_sample_types        1
+total                       3
+
+Select jobs to execute...
+
+[Sat Nov  2 20:56:55 2024]
+rule extract_sample_types:
+    input: /home/bec51319.iitr/workplace/tcga_data_analysis/data/gdc_sample_sheet.tsv
+    output: data/file_sample_types.tsv
+    jobid: 2
+    reason: Missing output files: data/file_sample_types.tsv
+    resources: tmpdir=/tmp
+
+[Sat Nov  2 20:56:55 2024]
+Finished job 2.
+1 of 3 steps (33%) done
+Select jobs to execute...
+
+[Sat Nov  2 20:56:55 2024]
+rule extract_expression:
+    input: data/file_sample_types.tsv, /home/bec51319.iitr/workplace/tcga_data_analysis/data/tcga_data
+    output: results/nkx2_1_expression.csv
+    jobid: 1
+    reason: Missing output files: results/nkx2_1_expression.csv; Input files updated by another job: data/file_sample_types.tsv; Set of input files has changed since last execution
+    resources: tmpdir=/tmp
+
+[Sat Nov  2 20:57:58 2024]
+Finished job 1.
+2 of 3 steps (67%) done
+Select jobs to execute...
+
+[Sat Nov  2 20:57:58 2024]
+localrule all:
+    input: results/nkx2_1_expression.csv
+    jobid: 0
+    reason: Input files updated by another job: results/nkx2_1_expression.csv
+    resources: tmpdir=/tmp
+
+[Sat Nov  2 20:57:58 2024]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: .snakemake/log/2024-11-02T205654.283010.snakemake.log

@@ -1,0 +1,49 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job stats:
+job                   count
+------------------  -------
+all                       1
+extract_expression        1
+plot_expression           1
+total                     3
+
+Select jobs to execute...
+
+[Sat Nov  2 16:09:22 2024]
+rule extract_expression:
+    input: luad_rna.txt, gdc_sample_sheet.tsv
+    output: results/nkx2_1_expression.csv
+    jobid: 1
+    reason: Code has changed since last execution
+    resources: tmpdir=/tmp
+
+[Sat Nov  2 16:09:27 2024]
+Finished job 1.
+1 of 3 steps (33%) done
+Select jobs to execute...
+
+[Sat Nov  2 16:09:27 2024]
+rule plot_expression:
+    input: results/nkx2_1_expression.csv
+    output: results/nkx2_1_boxplot.png
+    jobid: 2
+    reason: Missing output files: results/nkx2_1_boxplot.png; Input files updated by another job: results/nkx2_1_expression.csv
+    resources: tmpdir=/tmp
+
+[Sat Nov  2 16:09:28 2024]
+Error in rule plot_expression:
+    jobid: 2
+    input: results/nkx2_1_expression.csv
+    output: results/nkx2_1_boxplot.png
+
+RuleException:
+CalledProcessError in file /home/bec51319.iitr/workplace/tcga_data_analysis/data/expression_plot.smk, line 21:
+Command 'set -euo pipefail;  Rscript --vanilla /home/bec51319.iitr/workplace/tcga_data_analysis/data/.snakemake/scripts/tmpdqaxojjw.plot_expression.R' returned non-zero exit status 1.
+  File "/home/bec51319.iitr/workplace/tcga_data_analysis/data/expression_plot.smk", line 21, in __rule_plot_expression
+  File "/home/bec51319.iitr/miniforge3/envs/tcga_data_analysis/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-11-02T160921.340536.snakemake.log
